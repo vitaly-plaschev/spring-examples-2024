@@ -1,7 +1,15 @@
 package com.cdpo_spring_developer.tech_services.dto;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+
 public class TechServiceDTO {
     private int id;
+
+    @NotNull
+    @NotBlank
+    @NotEmpty
     private String name;
 
     public int getId() {

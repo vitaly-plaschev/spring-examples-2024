@@ -17,7 +17,7 @@ public class ServicesRepository {
     public TechServiceDTO findById(int id) {
         for (TechServiceDTO service : list) {
             if (service.getId() == id) {
-                return list.get(id);
+                return service;
             }
         }
         return null;

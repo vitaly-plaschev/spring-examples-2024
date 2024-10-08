@@ -2,6 +2,8 @@ package com.cdpo_spring_developer.tech_services.controller;
 
 import com.cdpo_spring_developer.tech_services.dto.TechServiceDTO;
 import com.cdpo_spring_developer.tech_services.service.TechServiceService;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.Positive;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,7 +16,7 @@ public class ServicesController {
     TechServiceService service;
 
     @PostMapping("/create")
-    public TechServiceDTO createService(@RequestBody TechServiceDTO req) {
+    public TechServiceDTO createService(@Valid @RequestBody TechServiceDTO req) {
         return service.save(req);
     }
 
@@ -24,7 +26,7 @@ public class ServicesController {
     }
 
     @GetMapping("/{serviceId}")
-    public TechServiceDTO getCustomerById(@PathVariable int serviceId) {
+    public TechServiceDTO getCustomerById(@Positive @PathVariable int serviceId) {
         return service.findById(serviceId);
     }
 }
