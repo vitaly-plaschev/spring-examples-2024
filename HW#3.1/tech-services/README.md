@@ -3,7 +3,7 @@
 GET http://localhost:8080/api/v1/services/all    
 
  2. Add record
- POST http://localhost:8080/api/v1/services/create
+ POST http://localhost:8080/api/v1/services/create    
  Payload sample:    
  {    
     "id": 1,    
