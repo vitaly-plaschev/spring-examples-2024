@@ -21,12 +21,12 @@ public class ServicesController {
     }
 
     @GetMapping("/all")
-    public List<TechServiceDTO> getAllCustomers() {
+    public List<TechServiceDTO> getAllServices() {
         return service.getAllServices();
     }
 
     @GetMapping("/{serviceId}")
-    public TechServiceDTO getCustomerById(@Positive @PathVariable int serviceId) {
+    public TechServiceDTO getServiceById(@Positive @PathVariable int serviceId) {
         return service.findById(serviceId);
     }
 }

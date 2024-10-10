@@ -11,6 +11,7 @@ public class ServicesRepository {
     private final List<TechServiceDTO> list = new ArrayList<TechServiceDTO>();
 
     public List<TechServiceDTO> getAllServices() {
+        if (list.isEmpty()) return List.of();
         return list;
     }
 
