@@ -16,7 +16,7 @@ services:
     environment:
       POSTGRES_USER: cdpo
       POSTGRES_PASSWORD: cdpo
-      POSTGRES_DB: animals
+      POSTGRES_DB: tech-services
     ports:
       - 5432:5432
 
