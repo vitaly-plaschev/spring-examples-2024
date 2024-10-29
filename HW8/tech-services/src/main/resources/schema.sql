@@ -1,0 +1,29 @@
+DROP TABLE IF EXISTS customers CASCADE;
+DROP TABLE IF EXISTS products CASCADE;
+DROP TABLE IF EXISTS orders CASCADE;
+
+CREATE TABLE IF NOT EXISTS customers(
+	id SERIAL PRIMARY KEY,
+	first_name VARCHAR(255),
+	last_name VARCHAR(255),
+	email VARCHAR(255),
+	address VARCHAR(255),
+	state VARCHAR(255),
+	city VARCHAR(255),
+	zip_code VARCHAR(255)
+);
+
+CREATE TABLE IF NOT EXISTS products(
+	id SERIAL PRIMARY KEY,
+	name VARCHAR(255),
+	price INT
+);
+
+CREATE TABLE IF NOT EXISTS orders(
+	id SERIAL PRIMARY KEY,
+	order_number INT,
+	product_id INT REFERENCES products(id),
+	customer_id INT REFERENCES customers(id),
+	age INT,
+	order_date DATE DEFAULT CURRENT_TIMESTAMP
+);
