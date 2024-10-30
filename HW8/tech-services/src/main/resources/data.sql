@@ -1,26 +1,24 @@
-insert into customers (first_name, last_name, email, address, city, state, zip_code ) VALUES
-('Name1', 'Lastname1', 'email1@test.com', 'address 1', 'city 1', 'state 1', 'zio 1'),
-('Name2', 'Lastname2', 'email2@test.com', 'address 2', 'city 2', 'state 2', 'zio 2'),
-('Name3', 'Lastname3', 'email3@test.com', 'address 3', 'city 3', 'state 3', 'zio 3'),
-('Name4', 'Lastname4', 'email4@test.com', 'address 4', 'city 4', 'state 4', 'zio 4'),
-('Name5', 'Lastname5', 'email5@test.com', 'address 5', 'city 5', 'state 5', 'zio 5'),
-('Name6', 'Lastname6', 'email6@test.com', 'address 6', 'city 6', 'state 6', 'zio 6');
+insert into customers (name, mobile) VALUES
+('Name1', '+7 911 111-11-11'),
+('Name2', '+7 911 111-11-12'),
+('Name3', '+7 911 111-11-13'),
+('Name4', '+7 911 111-11-14'),
+('Name5', '+7 911 111-11-15'),
+('Name6', '+7 911 111-11-16'),
+('Name7', '+7 911 111-11-17'),
+('Name8', '+7 911 111-11-18'),
+('Name9', '+7 911 111-11-19'),
+('Name10', '+7 911 111-11-00');
 
-insert into products (name, price) VALUES
-('Product 1', 3),
-('Product 2', 7),
-('Product 3', 100),
-('Product 4', 65),
-('Product 5', 45),
-('Product 6', 32);
+insert into services (name, price) VALUES
+('Computer hardware check & repair', 1499.99),
+('Software update', 1000),
+('Digital appliances check & repair', 2380),
+('Electricity & water meters validation', 700),
+('Furniture assembling', 800),
+('TV repair', 1000);
 
-insert into orders (order_number, product_id, customer_id, age) VALUES
-(001,1, 4, 1),
-(002,3, 1, 2),
-(003,1, 1, 2),
-(004,1, 2, 2),
-(005,1, 1, 2),
-(006,4, 6, 2),
-(007,4, 4, 2),
-(008,4, 6, 2),
-(009,2, 5, 2);
+insert into orders (date_at, customer_id, service_id) VALUES
+('2024-10-01 12:45:00', 1, 1),
+('2024-11-01 14:00:00', 2, 2),
+('2024-12-01 15:00:00', 3, 1);
