@@ -3,6 +3,7 @@ package com.cdpo_spring_developer.tech_services.controller;
 import com.cdpo_spring_developer.tech_services.dto.CustomerRequestDTO;
 import com.cdpo_spring_developer.tech_services.exceptions.CustomerException;
 import com.cdpo_spring_developer.tech_services.service.CustomersService;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Positive;
 import lombok.extern.slf4j.Slf4j;
@@ -42,7 +43,7 @@ public class CustomerController {
     public List<CustomerRequestDTO> getCustomersByFilter(
             @RequestParam(required = false) String name,
             @RequestParam(required = false) String mobile) {
-        if (name == null || name.isBlank() && mobile == null || mobile.isBlank()) {
+        if ((name == null || name.isBlank()) && (mobile == null || mobile.isBlank())) {
             throw new CustomerException(HttpStatus.BAD_REQUEST, "Name or mobile should be specified");
         }
         return customersService.getCustomerByFilter(name, mobile);
@@ -56,5 +57,12 @@ public class CustomerController {
         } catch (CustomerException e) {
             throw new ResponseStatusException(e.getHttpStatus(), e.getMessage());
         }
+    }
+
+    @PostMapping()
+    public ResponseEntity<?> registerCustomer(@Valid @RequestBody CustomerRequestDTO customerlRequest, HttpServletRequest request) {
+        log.debug("POST request. Customer: {}", customerlRequest);
+        customersService.registerCustomer(customerlRequest);
+        return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 }

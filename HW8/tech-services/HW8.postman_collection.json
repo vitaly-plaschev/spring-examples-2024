@@ -7,30 +7,144 @@
 	},
 	"item": [
 		{
-			"name": "Get all customers",
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"url": {
-					"raw": "localhost/api/v1/customers/all",
-					"host": [
-						"localhost"
-					],
-					"path": [
-						"api",
-						"v1",
-						"customers",
-						"all"
-					]
+			"name": "Customers",
+			"item": [
+				{
+					"name": "Get all customers",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost/api/v1/customers/all",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"api",
+								"v1",
+								"customers",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get customer by Id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost/api/v1/customers?id=2",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"api",
+								"v1",
+								"customers"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get customer by Name",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost/api/v1/customers/Name2",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"api",
+								"v1",
+								"customers",
+								"Name2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get customer by Name or Mobile",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost/api/v1/customers/filter?name=Name2&mobile=+7 911 111-11-122",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"api",
+								"v1",
+								"customers",
+								"filter"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Name2"
+								},
+								{
+									"key": "mobile",
+									"value": "+7 911 111-11-122"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register customer",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"User1\",\n    \"mobile\": \"User1 mobile number\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost/api/v1/customers",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"api",
+								"v1",
+								"customers"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		}
 	]
 }

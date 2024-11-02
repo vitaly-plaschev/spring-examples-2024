@@ -45,4 +45,13 @@ public class CustomersService {
         List<Customers> customers = customersRepository.findByFilter(name, mobile);
         return customers.stream().map(customerMapper::mapToDTO).toList();
     }
+
+    public Long registerCustomer(CustomerRequestDTO customerRequest) {
+
+        Customers customer = customerMapper.mapToEntity(customerRequest);
+
+        customersRepository.save(customer);
+
+        return customer.getId();
+    }
 }
