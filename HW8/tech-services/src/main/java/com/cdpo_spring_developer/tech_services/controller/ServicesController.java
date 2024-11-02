@@ -1,7 +1,7 @@
 package com.cdpo_spring_developer.tech_services.controller;
 
 import com.cdpo_spring_developer.tech_services.dto.TechServiceDTO;
-import com.cdpo_spring_developer.tech_services.service.TechServiceService;
+import com.cdpo_spring_developer.tech_services.service.TechServiceServiceDummy;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Positive;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +13,7 @@ import java.util.List;
 @RequestMapping("/api/v1/services")
 public class ServicesController {
     @Autowired
-    TechServiceService service;
+    TechServiceServiceDummy service;
 
     @PostMapping("/create")
     public TechServiceDTO createService(@Valid @RequestBody TechServiceDTO req) {
