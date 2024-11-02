@@ -6,7 +6,6 @@ import com.cdpo_spring_developer.tech_services.exceptions.CustomerException;
 import com.cdpo_spring_developer.tech_services.mapper.CustomerMapper;
 import com.cdpo_spring_developer.tech_services.repository.CustomersRepository;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
@@ -30,5 +29,20 @@ public class CustomersService {
                 .orElseThrow(() -> new CustomerException(HttpStatus.NOT_FOUND, "Record not found"));
 
         return customerMapper.mapToDTO(customers);
+    }
+
+    public List<CustomerRequestDTO> getCustomerByName(String name) {
+        List<Customers> customers = customersRepository.findAllByName(name);
+        return customers.stream().map(customerMapper::mapToDTO).toList();
+    }
+
+    public List<CustomerRequestDTO> getCustomerByMobile(String mobile) {
+        List<Customers> customers = customersRepository.findAllByMobile(mobile);
+        return customers.stream().map(customerMapper::mapToDTO).toList();
+    }
+
+    public List<CustomerRequestDTO> getCustomerByFilter(String name, String mobile) {
+        List<Customers> customers = customersRepository.findByFilter(name, mobile);
+        return customers.stream().map(customerMapper::mapToDTO).toList();
     }
 }

@@ -3,7 +3,6 @@ package com.cdpo_spring_developer.tech_services.entity;
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 @Builder
@@ -17,7 +16,7 @@ public class Customers {
     @Column(name = "id")
     private long id;
 
-    @Column(name = "name")
+    @Column(name = "name", nullable = false)
     private String name;
 
     @Column(name = "mobile")
@@ -32,6 +31,10 @@ public class Customers {
     public Customers(String name, String mobile) {
         this.name = name;
         this.mobile = mobile;
+    }
+
+    public Customers(String name) {
+        this.name = name;
     }
 
     public Customers() {
