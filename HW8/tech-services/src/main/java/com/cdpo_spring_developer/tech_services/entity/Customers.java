@@ -37,6 +37,10 @@ public class Customers {
         this.name = name;
     }
 
+    public Customers(Long id) {
+        this.id = id;
+    }
+
     public Customers() {
     }
 }

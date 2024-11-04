@@ -65,4 +65,18 @@ public class CustomerController {
         customersService.registerCustomer(customerlRequest);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
+
+    @DeleteMapping()
+    public ResponseEntity<?> deleteCustomer(@Positive @RequestParam Long id) {
+        log.debug("DELETE request. Customer: {}", id);
+        customersService.deleteCustomer(id);
+        return ResponseEntity.status(HttpStatus.OK).build();
+    }
+
+    @PutMapping()
+    public ResponseEntity<?> deleteCustomer(@Positive @RequestParam Long id, @RequestBody CustomerRequestDTO customerlRequest) {
+        log.debug("UPDATE request. Customer: {}", id);
+        customersService.updateCustomer(id, customerlRequest);
+        return ResponseEntity.status(HttpStatus.OK).build();
+    }
 }

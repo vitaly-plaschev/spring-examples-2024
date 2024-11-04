@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @RequiredArgsConstructor
 @Service
@@ -53,5 +54,34 @@ public class CustomersService {
         customersRepository.save(customer);
 
         return customer.getId();
+    }
+
+    public void deleteCustomer(Long id) {
+        try {
+            customersRepository.customDeleteCustomer(id);
+        } catch (CustomerException e) {
+            throw new CustomerException(HttpStatus.INTERNAL_SERVER_ERROR, "Deletion of customer is failed");
+        }
+    }
+
+    public Long updateCustomer(Long id, CustomerRequestDTO customerRequest) {
+
+        Optional<Customers> optional = customersRepository.findById(id);
+        Customers original;
+        if (optional.isPresent()) {
+            original = optional.get();
+        } else {
+            throw new CustomerException(HttpStatus.BAD_REQUEST, "ID is not found");
+        }
+
+        Customers customerToUpdate = customerMapper.mapToEntity(customerRequest);
+        String name = customerToUpdate.getName();
+        String mobile = customerToUpdate.getMobile();
+
+        customersRepository.customUpdateCustomer(id,
+                name == null || name.isEmpty() ? original.getName() : name,
+                mobile == null || mobile.isEmpty() ? original.getMobile() : mobile);
+
+        return customerToUpdate.getId();
     }
 }
