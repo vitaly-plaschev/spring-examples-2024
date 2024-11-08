@@ -1,9 +1,11 @@
 package com.cdpo_spring_developer.tech_services.entity;
 
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
+@Builder
 @Getter
 @Setter
 @Entity
@@ -18,4 +20,30 @@ public class Services {
 
     @Column(name = "price", nullable = false)
     private Double price;
+
+    public Services(long id, String name, Double price) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
+    }
+
+    public Services(String name, Double price) {
+        this.name = name;
+        this.price = price;
+    }
+
+    public Services(String name) {
+        this.name = name;
+    }
+
+    public Services(Double price) {
+        this.price = price;
+    }
+
+    public Services(Long id) {
+        this.id = id;
+    }
+
+    public Services() {
+    }
 }
