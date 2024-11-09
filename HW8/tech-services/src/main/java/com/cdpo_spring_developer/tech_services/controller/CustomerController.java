@@ -74,7 +74,7 @@ public class CustomerController {
     }
 
     @PutMapping()
-    public ResponseEntity<?> deleteCustomer(@Positive @RequestParam Long id, @RequestBody CustomerRequestDTO customerlRequest) {
+    public ResponseEntity<?> updateCustomer(@Positive @RequestParam Long id, @RequestBody CustomerRequestDTO customerlRequest) {
         log.debug("UPDATE request. Customer: {}", id);
         customersService.updateCustomer(id, customerlRequest);
         return ResponseEntity.status(HttpStatus.OK).build();

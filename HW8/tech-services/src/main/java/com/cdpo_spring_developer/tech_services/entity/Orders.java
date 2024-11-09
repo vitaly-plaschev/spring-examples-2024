@@ -3,7 +3,7 @@ package com.cdpo_spring_developer.tech_services.entity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.annotations.UpdateTimestamp;
+
 
 import java.time.LocalDateTime;
 
@@ -22,12 +22,12 @@ public class Orders {
     @Column(name = "date_at")
     private LocalDateTime date;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "customer_id", nullable = false)
-    private Customers customerId;
+    private Customers customer;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "service_id", nullable = false)
-    private Services serviceId;
+    private Services service;
 
 }

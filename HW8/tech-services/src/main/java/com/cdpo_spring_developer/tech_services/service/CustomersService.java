@@ -64,7 +64,7 @@ public class CustomersService {
         }
     }
 
-    public Long updateCustomer(Long id, CustomerRequestDTO customerRequest) {
+    public void updateCustomer(Long id, CustomerRequestDTO customerRequest) {
 
         Optional<Customers> optional = customersRepository.findById(id);
         Customers original;
@@ -81,7 +81,5 @@ public class CustomersService {
         customersRepository.customUpdateCustomer(id,
                 name == null || name.isEmpty() ? original.getName() : name,
                 mobile == null || mobile.isEmpty() ? original.getMobile() : mobile);
-
-        return customerToUpdate.getId();
     }
 }
