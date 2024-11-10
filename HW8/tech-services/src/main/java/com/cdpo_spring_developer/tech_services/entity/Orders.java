@@ -3,9 +3,7 @@ package com.cdpo_spring_developer.tech_services.entity;
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 import lombok.Setter;
-
 
 import java.time.LocalDateTime;
 
