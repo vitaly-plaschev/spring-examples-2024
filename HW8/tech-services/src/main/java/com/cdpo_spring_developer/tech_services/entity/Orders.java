@@ -1,16 +1,19 @@
 package com.cdpo_spring_developer.tech_services.entity;
 
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 
 import java.time.LocalDateTime;
 
+@Builder
 @Getter
 @Setter
 @Entity
-@Table(name="orders")
+@Table(name = "orders")
 public class Orders {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,12 +25,20 @@ public class Orders {
     @Column(name = "date_at")
     private LocalDateTime date;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "customer_id", nullable = false)
-    private Customers customer;
+    @Column(name = "customer_id")
+    private Long customerId;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "service_id", nullable = false)
-    private Services service;
+    @Column(name = "service_id")
+    private Long serviceId;
 
+    public Orders(Long id, boolean isCompleted, LocalDateTime date, Long customerId, Long serviceId) {
+        this.id = id;
+        this.isCompleted = isCompleted;
+        this.date = date;
+        this.customerId = customerId;
+        this.serviceId = serviceId;
+    }
+
+    public Orders() {
+    }
 }
