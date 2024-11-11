@@ -10,11 +10,14 @@ import java.time.LocalDateTime;
 
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
 public record OrderRequestDTO(
+        @NotNull
         LocalDateTime date,
 
+        @NotNull
         @Positive
         Long customerId,
 
+        @NotNull
         @Positive
         Long serviceId
 ) {
