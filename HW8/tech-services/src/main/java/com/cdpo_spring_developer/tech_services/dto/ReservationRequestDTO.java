@@ -18,6 +18,8 @@ public record ReservationRequestDTO(
         @Positive
         Double price,
 
-        Boolean isCompleted
+        Boolean isCompleted,
+
+        Double totalAmount
 ) {
 }

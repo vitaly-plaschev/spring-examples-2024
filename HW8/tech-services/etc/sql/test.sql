@@ -125,3 +125,29 @@ INNER JOIN services
 INNER JOIN customers
     on orders.customer_id = customers.id
 order by orders.id;
+
+-- Get total revenue for period from all rows
+SELECT r.id, r.price, total.total_amount
+FROM reservations r,
+    (SELECT SUM(price) AS total_amount FROM reservations) AS total;
+
+    SELECT
+        r.id,
+        r.price,
+        ROUND(total.total_amount::NUMERIC, 2)
+    FROM
+        reservations r,
+        (
+    		SELECT SUM(price) AS total_amount FROM reservations
+    		WHERE reservations.is_completed = true AND (reservations.date_at > '2024-01-01T00:00:00' AND reservations.date_at < '2024-12-03T23:59:59')
+    	) AS total
+    WHERE r.is_completed = true AND (r.date_at > '2024-01-01T00:00:00' AND r.date_at < '2024-12-03T23:59:59')
+
+--    Get total revenue for period from all rows
+SELECT id, order_id, customer_name, service_name, date_at, price, is_completed, total.total_amount
+FROM reservations r,
+    (
+		SELECT SUM(price) AS total_amount FROM reservations
+		WHERE reservations.is_completed = true AND (reservations.date_at > '2024-01-01T00:00:00' AND reservations.date_at < '2024-12-03T23:59:59')
+	) AS total
+WHERE r.is_completed = true AND (r.date_at > '2024-01-01T00:00:00' AND r.date_at < '2024-12-03T23:59:59')

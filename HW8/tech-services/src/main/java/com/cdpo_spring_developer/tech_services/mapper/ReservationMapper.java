@@ -15,6 +15,7 @@ public class ReservationMapper {
                 .date(reservationRequest.date())
                 .price(reservationRequest.price())
                 .isCompleted(reservationRequest.isCompleted())
+                .totalAmount(reservationRequest.totalAmount())
                 .build();
     }
 
@@ -25,7 +26,8 @@ public class ReservationMapper {
                 reservations.getServiceName(),
                 reservations.getDate(),
                 reservations.getPrice(),
-                reservations.isCompleted()
+                reservations.isCompleted(),
+                reservations.getTotalAmount()
         );
     }
 }

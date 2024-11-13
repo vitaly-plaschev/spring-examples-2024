@@ -34,13 +34,15 @@ public interface OrdersRepository extends JpaRepository<Orders, Long> {
 
     @Modifying
     @Transactional
+    @Query(nativeQuery = true,
+            value = "UPDATE orders " +
+                    "SET is_completed = true " +
+                    "WHERE id = :id ")
+    void completeOrder(Long id);
+
+    @Modifying
+    @Transactional
     @Query(nativeQuery = true, value = "INSERT INTO orders (date_at, customer_id, service_id) VALUES " +
             "(:date, :customerId, :serviceId)")
     void customRegisterOrder(LocalDateTime date, Long customerId, Long serviceId);
-
-//    @Query(nativeQuery = true,
-//            value = "SELECT * FROM orders " +
-//                    "WHERE is_completed = false AND " +
-//                    "(date_at > :from AND date_at < :to)")
-//    List<Orders> findAllReservations(LocalDateTime from, LocalDateTime to);
 }

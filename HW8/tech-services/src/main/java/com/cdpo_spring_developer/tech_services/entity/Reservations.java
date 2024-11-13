@@ -36,7 +36,10 @@ public class Reservations {
     @Column(name = "is_completed")
     private boolean isCompleted;
 
-    public Reservations(Long id, Long orderId, String customerName, String serviceName, LocalDateTime date, Double price, boolean isCompleted) {
+    @Column(name = "total_amount", columnDefinition = "COLUMN_TYPE default 0")
+    private Double totalAmount;
+
+    public Reservations(Long id, Long orderId, String customerName, String serviceName, LocalDateTime date, Double price, boolean isCompleted, Double totalAmount) {
         this.id = id;
         this.orderId = orderId;
         this.customerName = customerName;
@@ -44,6 +47,7 @@ public class Reservations {
         this.date = date;
         this.price = price;
         this.isCompleted = isCompleted;
+        this.totalAmount = totalAmount;
     }
 
     public Reservations() {

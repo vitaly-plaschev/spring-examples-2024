@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS orders(
 );
 
 CREATE VIEW reservations AS
-    SELECT row_number() OVER () AS id, orders.id as order_id, customers.name AS customer_name, services.name AS service_name, orders.date_at, services.price, orders.is_completed
+    SELECT row_number() OVER () AS id, orders.id as order_id, customers.name AS customer_name, services.name AS service_name, orders.date_at, services.price, orders.is_completed, 0 as total_amount
     FROM orders
     INNER JOIN services
         ON orders.service_id = services.id

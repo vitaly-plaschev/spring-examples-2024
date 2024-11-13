@@ -40,6 +40,14 @@ public class OrdersService {
         }
     }
 
+    public void completeOrder(Long id) {
+        try {
+            ordersRepository.completeOrder(id);
+        } catch (CustomerException e) {
+            throw new CustomerException(HttpStatus.INTERNAL_SERVER_ERROR, "Order completion is failed");
+        }
+    }
+
     public void deleteOrder(Long id) {
         try {
             ordersRepository.customDeleteOrder(id);

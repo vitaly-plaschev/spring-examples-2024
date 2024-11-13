@@ -46,6 +46,13 @@ public class OrderController {
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
+    @PostMapping(path="/complete")
+    public ResponseEntity<?> completeOrder(@Positive @RequestParam Long id) {
+        log.debug("Complete request. Order: {}", id);
+        ordersService.completeOrder(id);
+        return ResponseEntity.status(HttpStatus.OK).build();
+    }
+
     @DeleteMapping()
     public ResponseEntity<?> deleteOrder(@Positive @RequestParam Long id) {
         log.debug("DELETE request. Order: {}", id);
