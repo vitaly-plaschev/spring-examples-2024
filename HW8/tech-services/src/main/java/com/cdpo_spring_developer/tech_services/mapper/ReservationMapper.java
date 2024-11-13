@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 public class ReservationMapper {
     public Reservations mapToEntity(ReservationRequestDTO reservationRequest) {
         return Reservations.builder()
+                .orderId(reservationRequest.orderId())
                 .customerName(reservationRequest.customerName())
                 .serviceName(reservationRequest.serviceName())
                 .date(reservationRequest.date())
@@ -19,6 +20,7 @@ public class ReservationMapper {
 
     public ReservationRequestDTO mapToDTO(Reservations reservations) {
         return new ReservationRequestDTO(
+                reservations.getOrderId(),
                 reservations.getCustomerName(),
                 reservations.getServiceName(),
                 reservations.getDate(),

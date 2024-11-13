@@ -18,6 +18,9 @@ public class Reservations {
     @Column(name = "id")
     private long id;
 
+    @Column(name = "order_id")
+    private long orderId;
+
     @Column(name = "customer_name", nullable = false)
     private String customerName;
 
@@ -33,8 +36,9 @@ public class Reservations {
     @Column(name = "is_completed")
     private boolean isCompleted;
 
-    public Reservations(Long id, String customerName, String serviceName, LocalDateTime date, Double price, boolean isCompleted) {
+    public Reservations(Long id, Long orderId, String customerName, String serviceName, LocalDateTime date, Double price, boolean isCompleted) {
         this.id = id;
+        this.orderId = orderId;
         this.customerName = customerName;
         this.serviceName = serviceName;
         this.date = date;

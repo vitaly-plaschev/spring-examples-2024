@@ -10,6 +10,7 @@ import java.time.LocalDateTime;
 
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
 public record ReservationRequestDTO(
+        Long orderId,
         String customerName,
         String serviceName,
         LocalDateTime date,
