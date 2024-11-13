@@ -113,3 +113,15 @@ select age, COUNT(age)
 from customers
 where age > 30
 GROUP BY age;
+
+
+select * from orders
+where is_completed = false and (date_at > '2024-11-01 00:00:00' and date_at < '2024-11-03 23:59:59')
+
+select customers.name as customer_name, services.name as service_name, orders.date_at, services.price, orders.is_completed
+from orders
+INNER JOIN services
+    on orders.service_id = services.id
+INNER JOIN customers
+    on orders.customer_id = customers.id
+order by orders.id;

@@ -37,4 +37,10 @@ public interface OrdersRepository extends JpaRepository<Orders, Long> {
     @Query(nativeQuery = true, value = "INSERT INTO orders (date_at, customer_id, service_id) VALUES " +
             "(:date, :customerId, :serviceId)")
     void customRegisterOrder(LocalDateTime date, Long customerId, Long serviceId);
+
+//    @Query(nativeQuery = true,
+//            value = "SELECT * FROM orders " +
+//                    "WHERE is_completed = false AND " +
+//                    "(date_at > :from AND date_at < :to)")
+//    List<Orders> findAllReservations(LocalDateTime from, LocalDateTime to);
 }

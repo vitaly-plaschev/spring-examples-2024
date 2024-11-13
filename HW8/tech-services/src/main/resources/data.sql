@@ -18,10 +18,10 @@ insert into services (name, price) VALUES
 ('Furniture assembling', 800),
 ('TV repair', 1000);
 
-insert into orders (date_at, customer_id, service_id) VALUES
-('2024-10-01T12:45:00', 1, 1),
-('2024-11-01T14:00:00', 2, 2),
-('2024-12-01T15:00:00', 3, 1),
-('2024-11-01T14:30:00', 4, 3),
-('2024-11-03T10:00:00', 4, 4),
-('2024-11-04T09:00:00', 5, 6);
+insert into orders (is_completed, date_at, customer_id, service_id) VALUES
+(true, '2024-10-01T12:45:00', 1, 1),
+(true, '2024-11-01T14:00:00', 2, 2),
+(true, '2024-12-01T15:00:00', 3, 1),
+(false, '2024-11-01T14:30:00', 4, 3),
+(false, '2024-11-03T10:00:00', 4, 4),
+(false, '2024-11-04T09:00:00', 5, 6);
