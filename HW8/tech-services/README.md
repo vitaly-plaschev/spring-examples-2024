@@ -7,7 +7,7 @@ $ docker compose up
 - Open in browser the SQL client of your choice adminer/pgadmin    
 Please refer to settings described at docker-compose.yml    
     
-Please pgadmin settings:     
+- Please note pgadmin settings:     
 In order to pgadmin for DB located at docker during connection create add following at:    
 $hostname/address: host.docker.internal       
 
