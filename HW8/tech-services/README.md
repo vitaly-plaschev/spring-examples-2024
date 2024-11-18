@@ -8,7 +8,7 @@ $ docker compose up
 Please refer to settings described at docker-compose.yml    
     
 - Please note pgadmin settings:     
-In order to pgadmin for DB located at docker during connection create add following at:    
+In order to pgadmin been able address DB located at docker, please add following at creation of connection:    
 $hostname/address: host.docker.internal       
 
 2. Please refer to DB structure at sql files (data.sql, scheme.sql) located at:     
