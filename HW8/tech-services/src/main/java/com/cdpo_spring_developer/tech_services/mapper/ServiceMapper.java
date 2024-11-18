@@ -1,8 +1,6 @@
 package com.cdpo_spring_developer.tech_services.mapper;
 
-import com.cdpo_spring_developer.tech_services.dto.CustomerRequestDTO;
 import com.cdpo_spring_developer.tech_services.dto.ServiceRequestDTO;
-import com.cdpo_spring_developer.tech_services.entity.Customers;
 import com.cdpo_spring_developer.tech_services.entity.Services;
 import org.springframework.stereotype.Service;
 

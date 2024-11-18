@@ -1,6 +1,5 @@
 package com.cdpo_spring_developer.tech_services.controller;
 
-import com.cdpo_spring_developer.tech_services.dto.CustomerRequestDTO;
 import com.cdpo_spring_developer.tech_services.dto.ServiceRequestDTO;
 import com.cdpo_spring_developer.tech_services.exceptions.CustomerException;
 import com.cdpo_spring_developer.tech_services.service.ServicesService;

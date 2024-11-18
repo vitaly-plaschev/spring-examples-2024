@@ -1,13 +1,11 @@
 package com.cdpo_spring_developer.tech_services.repository;
 
 import com.cdpo_spring_developer.tech_services.entity.Customers;
-import jakarta.persistence.Transient;
 import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 public interface CustomersRepository extends JpaRepository<Customers, Long> {

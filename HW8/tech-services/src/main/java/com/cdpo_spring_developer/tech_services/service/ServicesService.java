@@ -1,8 +1,6 @@
 package com.cdpo_spring_developer.tech_services.service;
 
-import com.cdpo_spring_developer.tech_services.dto.CustomerRequestDTO;
 import com.cdpo_spring_developer.tech_services.dto.ServiceRequestDTO;
-import com.cdpo_spring_developer.tech_services.entity.Customers;
 import com.cdpo_spring_developer.tech_services.entity.Services;
 import com.cdpo_spring_developer.tech_services.exceptions.CustomerException;
 import com.cdpo_spring_developer.tech_services.mapper.ServiceMapper;
@@ -32,12 +30,15 @@ public class ServicesService {
     }
 
     public Long registerService(ServiceRequestDTO serviceRequest) {
+        try {
+            Services service = serviceMapper.mapToEntity(serviceRequest);
 
-        Services service = serviceMapper.mapToEntity(serviceRequest);
+            servicesRepository.save(service);
 
-        servicesRepository.save(service);
-
-        return service.getId();
+            return service.getId();
+        } catch (CustomerException e) {
+            throw new CustomerException(HttpStatus.INTERNAL_SERVER_ERROR, "Register of service is failed");
+        }
     }
 
     public void deleteService(Long id) {
@@ -62,9 +63,13 @@ public class ServicesService {
         String name = serviceToUpdate.getName();
         Double price = serviceToUpdate.getPrice();
 
-        servicesRepository.customUpdateServices(id,
-                name == null || name.isEmpty() ? original.getName() : name,
-                price == null || price.isNaN()? original.getPrice() : price);
+        try {
+            servicesRepository.customUpdateServices(id,
+                    name == null || name.isEmpty() ? original.getName() : name,
+                    price == null || price.isNaN() ? original.getPrice() : price);
+        } catch (CustomerException e) {
+            throw new CustomerException(HttpStatus.INTERNAL_SERVER_ERROR, "Deletion of service is failed");
+        }
     }
 
 }

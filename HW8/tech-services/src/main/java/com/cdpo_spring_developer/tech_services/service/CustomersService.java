@@ -48,12 +48,16 @@ public class CustomersService {
     }
 
     public Long registerCustomer(CustomerRequestDTO customerRequest) {
+        try {
+            Customers customer = customerMapper.mapToEntity(customerRequest);
 
-        Customers customer = customerMapper.mapToEntity(customerRequest);
+            customersRepository.save(customer);
 
-        customersRepository.save(customer);
+            return customer.getId();
 
-        return customer.getId();
+        } catch (CustomerException e) {
+            throw new CustomerException(HttpStatus.INTERNAL_SERVER_ERROR, "Customer register is failed");
+        }
     }
 
     public void deleteCustomer(Long id) {
@@ -78,8 +82,12 @@ public class CustomersService {
         String name = customerToUpdate.getName();
         String mobile = customerToUpdate.getMobile();
 
-        customersRepository.customUpdateCustomer(id,
-                name == null || name.isEmpty() ? original.getName() : name,
-                mobile == null || mobile.isEmpty() ? original.getMobile() : mobile);
+        try {
+            customersRepository.customUpdateCustomer(id,
+                    name == null || name.isEmpty() ? original.getName() : name,
+                    mobile == null || mobile.isEmpty() ? original.getMobile() : mobile);
+        } catch (CustomerException e) {
+            throw new CustomerException(HttpStatus.INTERNAL_SERVER_ERROR, "Update of customer is failed");
+        }
     }
 }

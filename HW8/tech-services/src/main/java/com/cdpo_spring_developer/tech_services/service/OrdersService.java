@@ -1,11 +1,9 @@
 package com.cdpo_spring_developer.tech_services.service;
 
 import com.cdpo_spring_developer.tech_services.dto.OrderRequestDTO;
-import com.cdpo_spring_developer.tech_services.dto.ReservationRequestDTO;
 import com.cdpo_spring_developer.tech_services.entity.Orders;
 import com.cdpo_spring_developer.tech_services.exceptions.CustomerException;
 import com.cdpo_spring_developer.tech_services.mapper.OrderMapper;
-import com.cdpo_spring_developer.tech_services.mapper.ReservationMapper;
 import com.cdpo_spring_developer.tech_services.repository.OrdersRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -71,16 +69,13 @@ public class OrdersService {
         Long costumerId = orderToUpdate.getCustomerId();
         Long serviceId = orderToUpdate.getServiceId();
 
-        ordersRepository.customUpdateOrder(id,
-                date == null ? original.getDate() : date,
-                costumerId == null ? original.getCustomerId() : costumerId,
-                serviceId == null ? original.getServiceId() : serviceId);
+        try {
+            ordersRepository.customUpdateOrder(id,
+                    date == null ? original.getDate() : date,
+                    costumerId == null ? original.getCustomerId() : costumerId,
+                    serviceId == null ? original.getServiceId() : serviceId);
+        } catch (CustomerException e) {
+            throw new CustomerException(HttpStatus.INTERNAL_SERVER_ERROR, "Update of order is failed");
+        }
     }
-
-//    public List<ReservationRequestDTO> getAllReservations(ReservationRequestDTO reservationRequest) {
-//        LocalDateTime from = reservationRequest.from();
-//        LocalDateTime to = reservationRequest.to();
-//        List<ReservationRequestDTO> orders = ordersRepository.findAllReservations(from, to);
-//        return orders.stream().map(ReservationMapper::mapToDTO).toList();
-//    }
 }

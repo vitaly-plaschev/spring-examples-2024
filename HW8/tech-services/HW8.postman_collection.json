@@ -10,6 +10,32 @@
 			"name": "Customers",
 			"item": [
 				{
+					"name": "Get all customers",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost/api/v1/customers/all",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"api",
+								"v1",
+								"customers",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Get customer by Id",
 					"request": {
 						"method": "GET",
