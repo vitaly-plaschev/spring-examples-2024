@@ -1,16 +1,20 @@
-### Java Spring HW 3.1    
-1. Return all records    
-GET http://localhost:8080/api/v1/services/all    
+### Java Spring HW 8    
+1. How to run HW 8
+- Start up the database with test data    
+$ cd etc/docker    
+$ docker compose up    
+    
+- Open in browser the SQL client of your choice adminer/pgadmin    
+Please refer to settings described at docker-compose.yml    
+    
+Please pgadmin settings:     
+In order to pgadmin for DB located at docker during connection create add following at:    
+$hostname/address: host.docker.internal       
 
- 2. Add record
- POST http://localhost:8080/api/v1/services/create
- Payload sample:    
- {
-    "id": 1,
-    "name": "service 1"
- }
- Validation included    
+2. Please refer to DB structure at sql files (data.sql, scheme.sql) located at:     
+$ cd src/main/resources
 
- 3. Fetch record by id    
- http://localhost:8080/api/v1/services/1
- Validation included    
+3. Please import Postman client collection and refer for provided API    
+
+
+
